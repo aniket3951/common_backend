@@ -4,7 +4,7 @@ from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL = os.environ.get("postgresql://auto:AWg52ySEBNMWHf1RkQayhw3Mt43DqR1N@dpg-d64df9cr85hc73bqahvg-a/royaldb_5t09")
 
 def get_db():
     return psycopg2.connect(DATABASE_URL)
@@ -61,3 +61,4 @@ def dashboard():
     bookings = cur.fetchall()
     conn.close()
     return render_template("dashboard.html", bookings=bookings)
+
