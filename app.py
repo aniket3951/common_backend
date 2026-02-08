@@ -27,7 +27,12 @@ def init_db():
     conn.commit()
     conn.close()
 
-init_db()
+try:
+    init_db()
+    print("✅ Database initialized")
+except Exception as e:
+    print("❌ Database init failed:", e)
+
 
 @app.route("/")
 def home():
@@ -61,4 +66,5 @@ def dashboard():
     bookings = cur.fetchall()
     conn.close()
     return render_template("dashboard.html", bookings=bookings)
+
 
